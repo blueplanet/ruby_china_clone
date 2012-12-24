@@ -19,11 +19,18 @@ group :production do
   gem 'thin'
 end
 
-group :development, :test do
+group :development do
   gem 'pry'
   gem 'pry-debugger'
   gem 'pry-rails'
   gem 'heroku'
+
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'rb-fsevent'
+end
+
+group :development, :test do
   gem 'sqlite3'
 end
 
