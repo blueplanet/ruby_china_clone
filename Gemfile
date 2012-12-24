@@ -26,3 +26,8 @@ group :development, :test do
   gem 'heroku'
   gem 'sqlite3'
 end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+end
