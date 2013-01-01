@@ -1,6 +1,8 @@
 MyRubyChina::Application.routes.draw do
-  resources :topics, only: [:index]
+  resources :topics, only: [:index, :show]
   resources :nodes, only: [:show]
+
+  root to: "topics#index"
 
   match 'ui/:action', controller: 'ui'
   # The priority is based upon order of creation:
