@@ -1,10 +1,12 @@
-= render 'shared/breadcrumb', links: [["Home", ""], ["社区", ""]]
+= render 'shared/breadcrumb', links: [["Home", ""], ["社区", ""], ["Ruby", ""]]
 
-%section#topics
-  %section#topics_info.box.box-gray.info-box
-    %span 查看： 默认
+%section#node_topics
+  %section#node_info.box.box-gray.info-box
+    %h2= @node.name
+    %span 共有48个讨论主题
+    %p= @node.description
   %ul.topics.box
-    - @topics.each do |topic|
+    - @node.topics.each do |topic|
       %li
         %a.span1(href="")
           %img(src="#{gravatar_url('joe@example.com')}")
