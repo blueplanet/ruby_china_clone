@@ -12,7 +12,7 @@
           %p.topic_title
             = link_to topic.title
           %p.topic_info
-            = link_to "分享", nil, class: "node"
+            = link_to topic.node.name, nil, class: "node"
             %span= "  •  "
             = link_to "knwang", nil, class: "user_link"
             %span= "  •  "
