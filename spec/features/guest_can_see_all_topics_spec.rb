@@ -3,9 +3,11 @@ feature '访问者希望看到所有帖子的列表' do
   background do
     Topic.delete_all
 
-    Topic.create title: "DHH 的公开课"
-    Topic.create title: "Rails3 中 compass 的 IE 使用问题"
-    Topic.create title: "这周二上海搞Ruby Tuesday么？"
+    node = Node.create name: "瞎扯淡"
+
+    Topic.create title: "DHH 的公开课", node: node
+    Topic.create title: "Rails3 中 compass 的 IE 使用问题", node: node
+    Topic.create title: "这周二上海搞Ruby Tuesday么？", node: node
   end
 
   scenario '访问/topics, 应该显示所有帖子' do

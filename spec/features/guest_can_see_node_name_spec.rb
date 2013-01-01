@@ -10,9 +10,11 @@ feature '访问者希望看到帖子的节点名称' do
     Topic.create title: "这周二上海搞Ruby Tuesday么？", node: node
   end
 
-  scenario do
+  scenario '访问/topics, 应该显示帖子的节点名称' do
     visit '/topics'
 
-    page.should have_content '瞎扯淡'
+    Topic.all.each do |topic|
+      page.should have_content topic.node.name
+    end
   end
 end
