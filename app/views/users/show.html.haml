@@ -1,0 +1,10 @@
+%section#user.box
+  %h1 个人信息
+  %img(src="#{gravatar_url('joe@example.com')}")
+  %dl
+    %dt.span1 ID:
+    %dd
+      %strong= @user.name
+    %dt.span1 Since:
+    %dd= @user.created_at
+
