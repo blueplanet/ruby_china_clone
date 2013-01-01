@@ -5,22 +5,7 @@
     %h2= @node.name
     %span 共有48个讨论主题
     %p= @node.description
-  %ul.topics.box
-    - @node.topics.each do |topic|
-      %li
-        %a.span1(href="")
-          %img(src="#{gravatar_url('joe@example.com')}")
-        %article.span7
-          %p.topic_title
-            = link_to topic.title
-          %p.topic_info
-            = link_to topic.node.name, topic.node, class: "node"
-            %span= "  •  "
-            = link_to "knwang", nil, class: "user_link"
-            %span= "  •  "
-            = "published #{time_ago_in_words(topic.created_at)} ago"
-        %p.replies.span1
-          %span 12
+  = render 'topics/topics', topics: @node.topics
 
 %section#sidebar
   %section#new_topic.box
