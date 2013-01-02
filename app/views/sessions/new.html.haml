@@ -1,0 +1,16 @@
+= render 'shared/breadcrumb', links: [["Home", ""]]
+
+%section#sign_in.box
+  %h1 登录
+  = form_tag sessions_path, method: :post, class: "form-horizontal" do
+    .control-group
+      = label_tag :user_name, "用户名", class: "control-label"
+      .controls
+        = text_field_tag :user_name
+    .submit-button
+      = submit_tag "登录", class: "btn btn-primary"
+
+%section#sidebar
+  %section#has_account.box
+    %h2 还没有帐号?
+    = link_to "注册"

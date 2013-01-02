@@ -2,10 +2,12 @@ MyRubyChina::Application.routes.draw do
   resources :topics, only: [:index, :show]
   resources :nodes, only: [:show]
   resources :users, only: [:show, :create]
+  resources :sessions, only: [:create]
 
   root to: "topics#index"
 
   match 'sign_up', to: "users#new"
+  match 'sign_in', to: "sessions#new"
   match 'ui/:action', controller: 'ui'
   # The priority is based upon order of creation:
   # first created -> highest priority.
