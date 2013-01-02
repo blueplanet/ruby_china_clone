@@ -1,0 +1,26 @@
+= render 'shared/breadcrumb', links: [["Home", ""], ["社区", ""], ["发帖", ""]]
+
+%section#new_topic.box
+  %h1 新建帖子
+  = form_for @topic, html: {class: "form-horizontal"} do |f|
+    .control-group
+      = f.label "标题", class: "control-label"
+      .controls
+        = f.select :node_id, Node.all.map{ |node| [node.name, node.id] }
+        %select
+          %option(value="Ruby") Ruby
+          %option(value="Rails") Rails
+          %option(value="XiaCheDan") XiaCheDan
+        = f.text_field :title
+    .control-group
+      = f.label "正文"
+      .controls
+        = f.text_area :content, rows: 20
+    .submit-button
+      = f.submit "保存", class: "btn btn-primary"
+      = link_to "取消"
+
+%section#sidebar
+  %section#new_post_note.box
+    %h2 发帖说明
+    %p 没啥可说的，发就是了
