@@ -10,4 +10,9 @@ class TopicsController < ApplicationController
   def new
     @topic = Topic.new
   end
+
+  def create
+    Topic.create(params[:topic])
+    redirect_to root_path
+  end
 end
