@@ -1,5 +1,5 @@
 MyRubyChina::Application.routes.draw do
-  resources :topics, only: [:index, :show]
+  resources :topics, only: [:index, :show, :new]
   resources :nodes, only: [:show]
   resources :users, only: [:show, :create]
   resources :sessions, only: [:create]
