@@ -3,6 +3,8 @@ feature '访问者希望看到帖子的详细信息' do
   background do
     @node = Node.create name: "Ruby"
     @topic = Topic.create title: "topic 1 test", content: "topic 1 content",  node: @node
+
+    5.times.map.with_index { |i| Reply.create content: "reply #{i}", topic: @topic }
   end
 
   scenario '访问/topics/1, 应该显示帖子的详细信息' do
@@ -17,4 +19,14 @@ feature '访问者希望看到帖子的详细信息' do
     page.should have_link @topic.node.name, href: node_path(@topic.node)
     page.should have_link "浏览帖子", href: topic_path(@topic)
   end
+
+  scenario '应该显示帖子的回复信息' do
+    visit "/topics/#{@topic.id}"
+
+    page.should have_content "共收到 #{@topic.replies.count} 条回复"
+
+    @topic.replies.each do |reply|
+      page.should have_content reply.content
+    end
+  end  
 end

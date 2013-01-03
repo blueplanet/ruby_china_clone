@@ -12,6 +12,20 @@
   %section#topic_content.box
     %p= @topic.content
 
+  %section#replies_banner.box.info-box
+    %span= "共收到 #{@topic.replies.count} 条回复"
+
+  %section#replies.box
+    %ul
+      - @topic.replies.each do |reply|
+        %li
+          %a.span1(href="")
+            %img(src="#{gravatar_url('joe@example.com')}")
+          %article.span8
+            = link_to "knwang", nil, class: "user_link"
+            %span= "#{time_ago_in_words(reply.created_at)} ago"
+            %p= reply.content
+
 %section#sidebar
   %section#new_topic.box
     = link_to "发布新帖", nil, class: "btn btn-success"
