@@ -12,5 +12,12 @@
           = link_to topic.author.name, topic.author, class: "user_link"
           %span= "  •  "
           = "published #{time_ago_in_words(topic.created_at)} ago"
+          - last_replay = topic.replies.last
+          - if last_replay
+            %span= "  •  "
+            last replied by
+            = link_to last_replay.user.name, last_replay.user, class: "user_link"
+            = "#{time_ago_in_words(last_replay.created_at)} ago"
+
       %p.replies.span1
         %span 12

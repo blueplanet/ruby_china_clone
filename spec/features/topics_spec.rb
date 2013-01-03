@@ -7,6 +7,8 @@ feature '访问者希望看到所有帖子' do
     Topic.create title: "DHH 的公开课", node: node, author: @user
     Topic.create title: "Rails3 中 compass 的 IE 使用问题", node: node, author: @user
     Topic.create title: "这周二上海搞Ruby Tuesday么？", node: node, author: @user
+
+    Topic.last.replies.create content: 'test replay', user: @user
   end
 
   context "访问/topics" do
@@ -26,6 +28,10 @@ feature '访问者希望看到所有帖子' do
 
     scenario '应该显示帖子创建者名称' do
       page.should have_content @user.name
+    end
+
+    scenario '应该显示帖子的最新回复的信息' do
+      page.should have_content "last replied by #{@user.name} less than a minute ago"
     end
   end
 end
