@@ -12,7 +12,10 @@ class TopicsController < ApplicationController
   end
 
   def create
-    Topic.create(params[:topic])
+    topic = Topic.new params[:topic]
+    topic.author = current_user
+    topic.save
+
     redirect_to root_path
   end
 end
