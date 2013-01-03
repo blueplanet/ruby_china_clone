@@ -8,3 +8,13 @@
     %dt.span1 Since:
     %dd= @user.created_at
 
+%section#user_recent_topics.box
+  %section#user_recent_topics_banner.box.info-box
+    %span 最近发布的帖子
+  %section#user_recent_topics_content.box
+    %ul
+      - @user.topics.each do |topic|
+        %li
+          = link_to topic.node.name, topic.node, class: "node"
+          = link_to topic.title, topic
+          %span= "#{time_ago_in_words(topic.created_at)} ago"
