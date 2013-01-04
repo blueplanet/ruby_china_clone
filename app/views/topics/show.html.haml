@@ -26,6 +26,12 @@
             %span= "#{time_ago_in_words(reply.created_at)} ago"
             %p= reply.content
 
+  %section#reply.box
+    = form_for [@topic, Reply.new] do |f|
+      = f.text_area :content, rows: 4
+      = f.submit "提交回复", class: "btn btn-primary"
+
+
 %section#sidebar
   %section#new_topic.box
     = link_to "发布新帖", nil, class: "btn btn-success"
