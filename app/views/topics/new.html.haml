@@ -7,10 +7,6 @@
       = f.label "标题", class: "control-label"
       .controls
         = f.select :node_id, Node.all.map{ |node| [node.name, node.id] }
-        %select
-          %option(value="Ruby") Ruby
-          %option(value="Rails") Rails
-          %option(value="XiaCheDan") XiaCheDan
         = f.text_field :title
     .control-group
       = f.label "正文"

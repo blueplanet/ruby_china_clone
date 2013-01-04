@@ -29,4 +29,22 @@ feature '访问者希望看到帖子的详细信息' do
       page.should have_content reply.content
     end
   end  
+
+  scenario '应该显示回复用的form' do
+    visit "/topics/#{@topic.id}"
+
+    page.should have_field 'reply_content'
+    page.should have_button '提交回复'
+  end
+
+  scenario '输入回复内容点击"提交回复"后，正常提交回复' do
+    visit "/topics/#{@topic.id}"
+
+    fill_in 'reply_content', with: "回复测试"
+    click_button "提交回复"
+
+    current_path.should == topic_path(@topic)
+
+    page.should have_content "回复测试"
+  end
 end
